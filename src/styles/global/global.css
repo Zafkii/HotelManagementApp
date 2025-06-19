@@ -1,0 +1,39 @@
+/* this is for the buttons in mi app */
+
+button {
+  padding: 8px 16px;
+  border: 2px solid #00d9ff;
+  background: rgb(17, 0, 67);
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 5px;
+  transition: border 0.5s ease-in-out, background 0.5s ease, color 0.5s ease;
+}
+
+button:hover {
+  background-color: #4b0c6577;
+  color: rgb(126, 255, 238);
+  border-color: #430fffcc;
+}
+
+/* for the inputs */
+input {
+  background-color: #21003abf;
+  border: none;
+  outline: none;
+  box-shadow: inset 1px 1px 2px #000000, inset -1px -1px 2px #281cff;
+}
+input::placeholder {
+  color: #91f0ff;
+}
+
+/* for the combobox */
+select {
+  border-color: #00ff62;
+  background-color: #21003abf;
+}
+select option {
+  border-color: #00ff62;
+  background-color: #005d2489;
+}

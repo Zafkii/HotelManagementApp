@@ -1,0 +1,46 @@
+{
+  $schema: "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
+  appId: "com.tudominio.hotellaluna",
+  productName: "Hotel la Luna",
+  compression: "maximum",
+  asar: true,
+  asarUnpack: ["*.node"],
+  npmRebuild: false,
+  nodeGypRebuild: false,
+  directories: {
+    output: "release/${version}",
+  },
+  files: [
+    "dist/**/*",
+    "dist-electron/**/*",
+    "!**/*.map",
+    "!**/*.log",
+    "!**/test/**",
+  ],
+  win: {
+    target: "nsis",
+    artifactName: "${productName}-Windows-${version}-Setup.${ext}",
+    rfc3161TimeStampServer: "http://timestamp.digicert.com",
+  },
+  nsis: {
+    oneClick: false,
+    perMachine: false,
+    allowToChangeInstallationDirectory: true,
+    deleteAppDataOnUninstall: false,
+    shortcutName: "Hotel la Luna",
+  },
+  mac: {
+    target: "dmg",
+    artifactName: "${productName}-Mac-${version}-Installer.${ext}",
+    icon: "public/icon.icns",
+  },
+  linux: {
+    target: "AppImage",
+    artifactName: "${productName}-Linux-${version}.${ext}",
+    icon: "public/icon.png",
+  },
+  extraResources: [],
+  extraFiles: [],
+  fileAssociations: [],
+  protocols: [],
+}

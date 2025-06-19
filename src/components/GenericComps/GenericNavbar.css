@@ -1,0 +1,37 @@
+.generic-navbar {
+  background-color: #5bc21b4e;
+  overflow-x: auto;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 70%;
+
+  border-radius: 2%;
+}
+
+.generic-navbar button {
+  height: clamp(30px, 3vw, 80px);
+  font-size: clamp(10px, 1.5vw, 16px);
+  /* centrar sus letras */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: normal;
+  word-break: normal;
+}
+/* ********************* */
+/* estado de color cuando el boton esta activo */
+.generic-navbar .active {
+  background: #00581cc0;
+  color: #d2fbf4;
+  border-color: #7cff2b;
+}
+
+.dropdown-content {
+  background-color: #4b0c6577;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

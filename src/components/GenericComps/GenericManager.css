@@ -1,0 +1,57 @@
+.generic-manager {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.form-table-wrapper {
+  display: grid;
+  grid-template-columns: clamp(170px, 25vw, 300px) 1fr;
+  grid-template-rows: auto auto;
+  height: 40vh;
+}
+
+.form-container {
+  grid-column: 1;
+  grid-row: 1;
+}
+.image-card-container {
+  grid-column: 1;
+  grid-row: 2;
+  width: auto;
+  height: auto;
+}
+.table-container {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+h2 {
+  font-size: clamp(35px, 1.5vw, 45px);
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar {
+  background-color: rgba(18, 189, 189, 0.259);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  margin: 5px;
+  gap: 8px;
+  border-radius: 2%;
+}
+
+.search-bar button {
+  width: auto;
+  height: clamp(30px, 1.5vw, 100px);
+  font-size: clamp(12px, 1.5vw, 14px);
+  /* centrar sus letras */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
