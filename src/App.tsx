@@ -1,15 +1,13 @@
-import Rooms from "./components/RoomsComps/Rooms"
-import Clients from "./components/ClientsComps/Clients"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import DynamicBGEffect from "./components/Background/DynamicEffect"
-
+import ConfigCompManager from "./components/ConfigComps/ConfigCompManager"
 function App() {
   return (
     <>
       {/* <DynamicBGEffect /> */}
       <ToastContainer />
-      <Rooms />
+      <ConfigCompManager />
     </>
   )
 }

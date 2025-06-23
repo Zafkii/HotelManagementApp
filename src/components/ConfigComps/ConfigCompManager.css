@@ -1,0 +1,32 @@
+.general-navbar {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 30px;
+}
+
+.general-nav-buttons button {
+  margin-left: 8px;
+  padding: 6px 12px;
+  background: #444;
+  color: white;
+  border: none;
+  cursor: pointer;
+  height: clamp(30px, 3vw, 35px);
+}
+
+.general-nav-buttons button:hover {
+  background: #666;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
