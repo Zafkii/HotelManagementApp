@@ -1,32 +1,33 @@
 .general-navbar {
-  background-color: #333;
-  color: white;
-  padding: 10px;
+  background-color: #0d114481;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-size: clamp(0.8rem, 1vw, 1rem);
+  width: 100%;
+  white-space: nowrap;
+  box-sizing: border-box;
+  margin: 0 auto; /* centrar contenido al medio */
+  overflow-x: auto;
+  scrollbar-width: none; /* Ocultar scrollbar en Firefox */
+  -ms-overflow-style: none; /* Ocultar scrollbar en IE y Edge */
 }
 
-.logo {
-  height: 30px;
+.logo-hotel {
+  flex-shrink: 0; /* Evita que el logo se reduzca o desplace */
+  font-size: 1.2rem;
+  size: 50px;
 }
-
-.general-nav-buttons button {
-  margin-left: 8px;
+.general-navbar button {
+  flex-shrink: 0;
+  white-space: nowrap;
   padding: 6px 12px;
-  background: #444;
+  background: #1f2a44;
   color: white;
   border: none;
   cursor: pointer;
-  height: clamp(30px, 3vw, 35px);
 }
-
-.general-nav-buttons button:hover {
-  background: #666;
-}
-
-.main-content {
-  flex-grow: 1;
-  padding: 20px;
-  overflow-y: auto;
+.config-comp-manager {
+  width: 100%;
+  overflow: hidden; /* ❌ Esto puede ocultar el scroll */
 }

@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Rooms from "./Rooms"
 import Clients from "./Clients"
+import ScrollableNavbar from "./ScrollableNavbar"
 import "./ConfigCompManager.css"
 
 type FrameView =
@@ -28,19 +29,17 @@ const ConfigCompManager = () => {
   return (
     <div className="config-comp-manager">
       {/* Navbar */}
-      <nav className="general-navbar">
-        <div className="general-nav-buttons">
-          <div className="logo">🛎️ HotelApp</div>
-          <button onClick={() => setFrameView("Rooms")}>Rooms</button>
-          <button onClick={() => setFrameView("Clients")}>Clients</button>
-          <button onClick={() => setFrameView("Employees")}>Employees</button>
-          <button onClick={() => setFrameView("Services")}>Services</button>
-          <button onClick={() => setFrameView("Reservations")}>
-            Reservations
-          </button>
-          <button onClick={() => setFrameView("Payments")}>Payments</button>
-        </div>
-      </nav>
+      <ScrollableNavbar className="general-navbar">
+        <div className="logo-hotel">🛎️</div>
+        <button onClick={() => setFrameView("Rooms")}>Rooms</button>
+        <button onClick={() => setFrameView("Clients")}>Clients</button>
+        <button onClick={() => setFrameView("Employees")}>Employees</button>
+        <button onClick={() => setFrameView("Services")}>Services</button>
+        <button onClick={() => setFrameView("Reservations")}>
+          Reservations
+        </button>
+        <button onClick={() => setFrameView("Payments")}>Payments</button>
+      </ScrollableNavbar>
 
       {/* Componente dinámico */}
       <> {renderView()}</>

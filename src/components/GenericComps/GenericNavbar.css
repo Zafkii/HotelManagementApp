@@ -6,13 +6,15 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 70%;
-
-  border-radius: 2%;
+  width: 100%;
+}
+.generic-navbar {
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
 }
 
 .generic-navbar button {
-  height: clamp(30px, 3vw, 80px);
+  height: clamp(28px, 3vw, 30px);
   font-size: clamp(10px, 1.5vw, 16px);
   /* centrar sus letras */
   display: flex;

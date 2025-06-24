@@ -1,0 +1,11 @@
+.scrollable-navbar {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+.scrollable-navbar::-webkit-scrollbar {
+  display: none; /* Chrome */
+}
