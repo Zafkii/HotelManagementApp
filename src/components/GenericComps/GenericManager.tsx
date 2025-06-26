@@ -155,7 +155,12 @@ export const GenericManager = ({
             formFields={formFields}
             initialData={
               selectedItem ||
-              Object.fromEntries(formFields.map((f) => [f.name, ""]))
+              Object.fromEntries(
+                formFields.map((f) => [
+                  f.name,
+                  f.type === "select" ? f.options?.[0] ?? "" : "",
+                ])
+              )
             }
             onSubmit={handleSubmit}
             onDelete={handleDelete}

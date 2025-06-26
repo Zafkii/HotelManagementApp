@@ -57,7 +57,11 @@ export const GenericForm = ({
               name={formField.name}
               value={String(formData[formField.name] || "")}
               onChange={handleChange}
+              required
             >
+              <option value="" disabled hidden>
+                -- Select an option --
+              </option>
               {formField.options?.map((opt) => (
                 <option key={opt} value={opt}>
                   {opt}
