@@ -7,26 +7,30 @@ import { SERVER_URL } from "../../config"
 import { useState } from "react"
 import { AssetItem } from "./GenericImageCard"
 import "./GenericManager.css"
+import { toast } from "react-toastify"
 
+//estos van a ser los tipos permitidos para todos los campos del formulario
 type FieldType = "text" | "number" | "select"
 
+//tipado unico en las tablas
 interface Field {
   name: string
   label: string
   type: FieldType
-  options?: string[]
+  options?: string[] //esta parte es opcional y solo seria para los campos tipo "select"
 }
 
+//props que recibe este componente
 interface Props {
-  table: string
-  formFields: Field[]
+  table: string //nombre de la db tabla
+  formFields: Field[] //campos del formulario
   navbarFilters?: {
     navbarField: string
     label: string
     options: string[]
-  }[]
-  typeFieldForImage?: string
-  customAssets?: Record<string, AssetItem>
+  }[] //filtros "opcionales" para la navbar (por ejemplo la tabla rooms tiene tipos, y clientes no asi que esto no se mostraria), los tipos son configurables en la configuracion del componente en ConfigComps por ejemplo si a clientes le agrego un campo "direccion" y lo quiero filtrar, lo agrego aqui
+  typeFieldForImage?: string // nombre del campo que determina el tipo de imagen o gif qu se va amostrar
+  customAssets?: Record<string, AssetItem> //las imagenes o gifs
 }
 
 export const GenericManager = ({
@@ -46,24 +50,25 @@ export const GenericManager = ({
     refetch,
   } = useTable(table)
 
+  // estado para resaltar la fila seleccionada
   const [selectedRowIndex, setSelectedRowIndex] = useState<number | null>(null)
 
+  // estados para la barra de busqueda
   const [searchTerm, setSearchTerm] = useState("")
   const [filteredData, setFilteredData] = useState<TableData[] | null>(null)
 
+  //funcion para el envio de datos del form
   const handleSubmit = async (item: TableData) => {
     const isEdit = Boolean(selectedItem)
+
+    // construyendo el endpoint URL, si es registro nuevo o edicion
     const url = isEdit
       ? `${SERVER_URL}/${table}/${item[formFields[0].name]}`
       : `${SERVER_URL}/${table}`
     const method = isEdit ? "PUT" : "POST"
 
-    // est transformación general para todos los campos tipo "number" a tipo "float"
-    // porfavor revisar detenidamente en un futuro si se va a guardar edades
-    // digamos un cliente juan con 25 años, si se guarda como float, en la db
-    // en teoria la db lo deberia guardar como numero
-    // PORFAVOR REVISAR MUY BIEN, cualquier error como ese
-    // se debe modificar esta logica
+    // Se transforma el objeto item a itemToSend para asegurar que los campos tipo número se conviertan a floa (WARNING POINT)
+    //revisar esta logica si realmente es necesaria, ya que si el campo es de tipo "number" pero va a la db con campo de edad y que solo registra numeros enteros, no deberia ser necesario pero incluso talvez tendra que ser corregido
     const itemToSend: TableData = {}
 
     for (const field of formFields) {
@@ -76,18 +81,37 @@ export const GenericManager = ({
       }
     }
 
-    console.log("Enviando datos:", itemToSend)
-
+    console.log("Sending datos:", itemToSend)
+    //ENVIO de datos al servidor
     try {
-      await fetch(url, {
+      const response = await fetch(url, {
         method,
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(itemToSend),
       })
-      await refetch()
-      setSelectedItem(null)
+      const result = await response.json()
+      if (!response.ok) {
+        if (response.status === 404) {
+          toast.error(`${result.error}, Are you trying to modify the id?`)
+        } else if (response.status === 400) {
+          toast.error(
+            result.error || "Error: Bad request. Please check your data."
+          )
+        } else {
+          toast.error("Error: An unexpected error occurred.")
+        }
+        return
+      }
+      await refetch() //refresca los datos de la tabla
+      setSelectedItem(null) //limpia el item seleccionado
+      toast.success(
+        isEdit ? "Updated Record Succesfully" : "Created Record Succesfully"
+      )
     } catch (error) {
-      console.error(error)
+      toast.error("Unexpected error occurred in the server")
+      console.error("Error sending data to server:", error)
     }
   }
 
