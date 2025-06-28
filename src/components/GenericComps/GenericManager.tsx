@@ -8,6 +8,7 @@ import { useState } from "react"
 import { AssetItem } from "./GenericImageCard"
 import "./GenericManager.css"
 import { toast } from "react-toastify"
+import { confirmAlert } from "react-confirm-alert"
 
 //estos van a ser los tipos permitidos para todos los campos del formulario
 type FieldType = "text" | "number" | "select"
@@ -82,7 +83,7 @@ export const GenericManager = ({
     }
 
     console.log("Sending datos:", itemToSend)
-    //ENVIO de datos al servidor
+    //ENVIO de datos
     try {
       const response = await fetch(url, {
         method,
@@ -115,15 +116,36 @@ export const GenericManager = ({
     }
   }
 
+  //ELIMINACION de datos
   const handleDelete = async (id: string | number) => {
-    try {
-      await fetch(`${SERVER_URL}/${table}/${id}`, { method: "DELETE" })
-      await refetch()
-      setSelectedItem(null)
-    } catch (error) {
-      console.error(error)
-    }
+    confirmAlert({
+      title: "Confirm deletion",
+      message: "Are you sure you want to delete this record?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: async () => {
+            try {
+              await fetch(`${SERVER_URL}/${table}/${id}`, { method: "DELETE" })
+              await refetch()
+              setSelectedItem(null)
+              toast.success("Registro eliminado correctamente")
+            } catch (error) {
+              toast.error("Error al eliminar el registro")
+              console.error(error)
+            }
+          },
+        },
+        {
+          label: "No",
+          onClick: () => {
+            toast.info("Canceled deletion")
+          },
+        },
+      ],
+    })
   }
+  //configuracion de imagenes si corresponde
   const imageConfig =
     typeFieldForImage && customAssets
       ? {

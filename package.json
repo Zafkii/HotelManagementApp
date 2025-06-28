@@ -1,7 +1,7 @@
 {
   "name": "hotel-la-luna",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "Hotel Management",
   "author": "Zafkii",
@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "react": "^18.2.0",
+    "react-confirm-alert": "^3.0.6",
     "react-dom": "^18.2.0",
     "react-toastify": "^11.0.5",
     "zod": "^3.24.2"
