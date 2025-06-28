@@ -1,0 +1,20 @@
+.search-bar {
+  background-color: rgba(18, 189, 189, 0.259);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  margin: 5px;
+  gap: 8px;
+}
+
+.search-bar button {
+  width: auto;
+  height: clamp(25px, 1.5vw, 30px);
+  font-size: clamp(12px, 1.5vw, 14px);
+  /* centrar sus letras */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

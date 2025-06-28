@@ -3,6 +3,7 @@ import { GenericForm } from "./GenericForm"
 import { GenericTable } from "./GenericTable"
 import { GenericNavbar } from "./GenericNavbar"
 import { GenericImageCard } from "./GenericImageCard"
+import { GenericSearchBar } from "./GenericSearchBar"
 import { SERVER_URL } from "../../config"
 import { useState } from "react"
 import { AssetItem } from "./GenericImageCard"
@@ -165,35 +166,15 @@ export const GenericManager = ({
           }}
         />
       )}
-      <div className="search-bar">
-        <input
-          type="text"
-          placeholder="Tap to search..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <button
-          onClick={() => {
-            const lower = searchTerm.toLowerCase()
-            const filtered = data.filter((row) =>
-              Object.values(row).some((val) =>
-                String(val).toLowerCase().includes(lower)
-              )
-            )
-            setFilteredData(filtered)
-          }}
-        >
-          Search
-        </button>
-        <button
-          onClick={() => {
-            setSearchTerm("")
-            setFilteredData(null)
-          }}
-        >
-          Clear
-        </button>
-      </div>
+
+      <GenericSearchBar<TableData>
+        data={data}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        onSearch={(filtered) => {
+          setFilteredData(filtered)
+        }}
+      />
 
       <div className="form-table-wrapper">
         <div className="form-container">
