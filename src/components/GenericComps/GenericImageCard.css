@@ -1,20 +1,24 @@
 .generic-image-card {
-  max-width: 35vh;
-  max-height: 25vh;
-  border-radius: 12px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  padding: 10px;
-  margin: 10px;
-  background-color: #024e5a86;
+  overflow: hidden;
+  object-fit: contain;
 }
 
 .generic-image {
-  max-width: 80%;
-  max-height: 80%;
-  object-fit: contain;
+  max-height: 150px;
+  width: 100%;
+  height: 100%;
   transition: transform 0.3s ease;
+}
+
+.image-card-container {
+  width: auto;
+  height: auto;
+  background-color: #12898d56;
+  padding: 10px;
+  margin: 10px;
 }

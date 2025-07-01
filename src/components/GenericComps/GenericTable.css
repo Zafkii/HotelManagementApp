@@ -4,7 +4,6 @@
   justify-content: center;
   align-items: center;
   grid-template-columns: auto;
-  max-height: 45vh;
   overflow-y: auto;
   overflow-x: auto;
   margin: 10px;
@@ -30,7 +29,7 @@
 /* cuando la tabla es seleccionada  */
 .selected {
   background-color: #00819ed2;
-  border: 2px solid #30f92195;
+  border: 2px solid #2ff921;
 }
 /* esto es el resaltado cuando se escribe en busqueda sin tener que darle al boton de buscar */
 mark {
@@ -38,4 +37,21 @@ mark {
   color: black;
   padding: 0 2px;
   font-weight: bold;
+}
+
+/* configuracion responsive de la tabla(tamaño) */
+.generic-table {
+  max-width: 40vw;
+  max-height: 58vh;
+  /* Opcional: asegurar que no crezca más que eso */
+
+  overflow: auto;
+}
+@media (max-width: 768px) {
+  .generic-table {
+    max-width: 90vw;
+    max-height: 30vh;
+    /* Opcional: asegurar que no crezca más que eso */
+    overflow: auto;
+  }
 }

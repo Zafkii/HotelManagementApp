@@ -1,14 +1,11 @@
 .generic-form {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   padding: 10px;
-  max-width: 35vh;
-  max-height: 25vh;
   justify-content: space-around;
   margin: 10px;
   background-color: #12898d56;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .generic-form div:not(.form-buttons) {
@@ -16,7 +13,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
 }
 
 .generic-form input,
@@ -29,16 +25,15 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-  padding: 5px;
-  margin-top: auto;
+  margin: 8px;
+  gap: 16px;
 }
 
 /* ************************************ */
 /* Tamaño de las letras en GENERIC FORM y su ajuste con la ventana */
 .generic-form button {
-  height: clamp(20px, 1.5vw, 100px);
-  width: clamp(50px, 1.5vw, 100px);
+  height: clamp(20px, 1.5vw, 30px);
+  width: clamp(50px, 1.5vw, 60px);
   font-size: clamp(10px, 1.5vw, 12px);
   /* centrar sus */
   display: flex;

@@ -7,9 +7,8 @@
 .form-table-wrapper {
   display: grid;
   grid-template-columns: 1fr;
-
   grid-template-rows: auto auto;
-  height: 50vh;
+  gap: 8px;
 }
 
 .form-container {
@@ -20,8 +19,6 @@
 .image-card-container {
   grid-column: 1;
   grid-row: 2;
-  width: auto;
-  height: auto;
 }
 
 .table-container {
@@ -34,3 +31,37 @@ h2 {
   display: flex;
   justify-content: center;
 }
+
+@media (max-width: 768px) {
+  .form-table-wrapper {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .form-container {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .image-card-container {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .table-container {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+  }
+}
+
+/* ajuste para que la imagen card y el form tengan el mismo tamaño sin exederse entre ellso en ancho y alto */
+.generic-form,
+.generic-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* ajuste para  */

@@ -1,7 +1,6 @@
 import { useState } from "react"
 import Rooms from "./Rooms"
 import Clients from "./Clients"
-import ScrollableNavbar from "./ScrollableNavbar"
 import "./ConfigCompManager.css"
 
 type FrameView =
@@ -14,6 +13,7 @@ type FrameView =
 
 const ConfigCompManager = () => {
   const [frameView, setFrameView] = useState<FrameView>("Rooms")
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const renderView = () => {
     switch (frameView) {
@@ -26,23 +26,61 @@ const ConfigCompManager = () => {
     }
   }
 
+  const handleNavigation = (view: FrameView) => {
+    setFrameView(view)
+    setMobileMenuOpen(false) // cerrar el menú en móvil
+  }
+
   return (
     <div className="config-comp-manager">
-      {/* Navbar */}
-      <ScrollableNavbar className="general-navbar">
-        <div className="logo-hotel">🛎️</div>
-        <button onClick={() => setFrameView("Rooms")}>Rooms</button>
-        <button onClick={() => setFrameView("Clients")}>Clients</button>
-        <button onClick={() => setFrameView("Employees")}>Employees</button>
-        <button onClick={() => setFrameView("Services")}>Services</button>
-        <button onClick={() => setFrameView("Reservations")}>
-          Reservations
-        </button>
-        <button onClick={() => setFrameView("Payments")}>Payments</button>
-      </ScrollableNavbar>
+      <nav className="general-navbar">
+        <div className="navbar-logo">🛎️</div>
 
-      {/* Componente dinámico */}
-      <> {renderView()}</>
+        {/* Botón menú hamburguesa */}
+        <button
+          className="hamburger"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          ☰
+        </button>
+
+        {/* Menú horizontal para escritorio */}
+        <div className="nav-buttons desktop-only">
+          <button onClick={() => handleNavigation("Rooms")}>Rooms</button>
+          <button onClick={() => handleNavigation("Clients")}>Clients</button>
+          <button onClick={() => handleNavigation("Employees")}>
+            Employees
+          </button>
+          <button onClick={() => handleNavigation("Services")}>Services</button>
+          <button onClick={() => handleNavigation("Reservations")}>
+            Reservations
+          </button>
+          <button onClick={() => handleNavigation("Payments")}>Payments</button>
+        </div>
+
+        {/* Menú vertical sobrepuesto para móvil */}
+        {mobileMenuOpen && (
+          <div className="mobile-menu">
+            <button onClick={() => handleNavigation("Rooms")}>Rooms</button>
+            <button onClick={() => handleNavigation("Clients")}>Clients</button>
+            <button onClick={() => handleNavigation("Employees")}>
+              Employees
+            </button>
+            <button onClick={() => handleNavigation("Services")}>
+              Services
+            </button>
+            <button onClick={() => handleNavigation("Reservations")}>
+              Reservations
+            </button>
+            <button onClick={() => handleNavigation("Payments")}>
+              Payments
+            </button>
+          </div>
+        )}
+      </nav>
+
+      {/* Vista seleccionada */}
+      <div className="view-container">{renderView()}</div>
     </div>
   )
 }
