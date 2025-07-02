@@ -1,8 +1,6 @@
 .generic-table {
   background-color: rgba(2, 126, 12, 0.337);
-  display: grid;
-  justify-content: center;
-  align-items: center;
+  display: block;
   grid-template-columns: auto;
   overflow-y: auto;
   overflow-x: auto;
@@ -13,7 +11,7 @@
 .generic-table table {
   border-collapse: collapse;
   /* tamaño de las letras de la tabla */
-  font-size: clamp(12px, 1.5vw, 16px);
+  font-size: clamp(12px, 1.5vw, 14px);
   overflow-x: auto;
 }
 
@@ -41,7 +39,7 @@ mark {
 
 /* configuracion responsive de la tabla(tamaño) */
 .generic-table {
-  max-width: 40vw;
+  max-width: 60vw;
   max-height: 58vh;
   /* Opcional: asegurar que no crezca más que eso */
 
@@ -51,6 +49,7 @@ mark {
   .generic-table {
     max-width: 90vw;
     max-height: 30vh;
+    width: auto;
     /* Opcional: asegurar que no crezca más que eso */
     overflow: auto;
   }

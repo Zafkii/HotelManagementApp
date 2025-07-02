@@ -6,7 +6,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  align-items: center;
 }
 
 .general-navbar {
@@ -14,8 +14,10 @@
   align-items: center;
   justify-content: space-between;
   background-color: #00009c3b;
-  padding: 0.5rem 1rem;
+  padding: 0.2rem 0.3rem;
   position: relative;
+  width: 100%;
+  max-width: 760px;
 }
 
 .navbar-logo {
@@ -26,7 +28,7 @@
 }
 
 .hamburger {
-  font-size: 1.5rem;
+  font-size: 1rem;
   background: none;
   border: none;
   color: white;
@@ -39,7 +41,7 @@
   border: none;
   color: white;
   margin: 0 0.5rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
   cursor: pointer;
 }
 
@@ -84,5 +86,8 @@
 
   .hamburger {
     display: block;
+  }
+  .general-navbar {
+    max-width: 460px;
   }
 }

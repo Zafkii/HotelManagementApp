@@ -1,12 +1,11 @@
 .generic-navbar {
   background-color: #5bc21b4e;
   overflow-x: auto;
-  padding: 10px;
-  margin: 10px;
+  padding: 4px;
+  margin: 4px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: space-around;
 }
 .generic-navbar {
   -webkit-overflow-scrolling: touch;
@@ -14,8 +13,8 @@
 }
 
 .generic-navbar button {
-  height: clamp(28px, 3vw, 30px);
-  font-size: clamp(10px, 1.5vw, 16px);
+  height: clamp(18px, 3vw, 30px);
+  font-size: clamp(11px, 1.5vw, 12px);
   /* centrar sus letras */
   display: flex;
   align-items: center;

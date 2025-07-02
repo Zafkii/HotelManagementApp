@@ -11,8 +11,9 @@
 
 .search-bar button {
   width: auto;
-  height: clamp(25px, 1.5vw, 30px);
-  font-size: clamp(12px, 1.5vw, 14px);
+  width: 100%;
+  height: clamp(20px, 1.5vw, 25px);
+  font-size: clamp(11px, 1.5vw, 14px);
   /* centrar sus letras */
   display: flex;
   align-items: center;
