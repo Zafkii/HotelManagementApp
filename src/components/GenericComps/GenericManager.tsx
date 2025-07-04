@@ -146,7 +146,7 @@ export const GenericManager = ({
       ],
     })
   }
-  //configuracion de imagenes si corresponde
+  //configuracion de imagenes correspondientes al tipo que se le configura
   const imageConfig =
     typeFieldForImage && customAssets
       ? {
@@ -155,6 +155,8 @@ export const GenericManager = ({
           defaultAsset: customAssets["default"],
         }
       : undefined
+
+  // Componente principal que renderiza el manager
   return (
     <div className="generic-manager">
       <h2> {table} Management </h2>
@@ -198,20 +200,17 @@ export const GenericManager = ({
             isEdit={Boolean(selectedItem)}
           />
         </div>
-        <div className="image-card-container">
-          {" "}
-          {imageConfig && (
+        {imageConfig && selectedItem && selectedItem[imageConfig.key] && (
+          <div className="image-card-container">
             <GenericImageCard
-              itemType={
-                selectedItem
-                  ? String(selectedItem[imageConfig.key] ?? "").toLowerCase()
-                  : null
-              }
+              itemType={String(
+                selectedItem[imageConfig.key] ?? ""
+              ).toLowerCase()}
               customTypes={imageConfig.assetMap}
               defaultImage={imageConfig.defaultAsset}
             />
-          )}
-        </div>
+          </div>
+        )}
         <div className="table-container">
           {loading ? (
             <p>Cargando datos...</p>
