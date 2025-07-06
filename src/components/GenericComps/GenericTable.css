@@ -40,7 +40,7 @@ mark {
 /* configuracion responsive de la tabla(tamaño) */
 .generic-table {
   max-width: 60vw;
-  max-height: 58vh;
+  max-height: 68vh;
   /* Opcional: asegurar que no crezca más que eso */
 
   overflow: auto;

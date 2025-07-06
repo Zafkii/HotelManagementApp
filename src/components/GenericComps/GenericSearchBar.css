@@ -2,9 +2,7 @@
   background-color: rgba(18, 189, 189, 0.259);
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
-
   padding: 5px;
   margin: 5px;
   gap: 8px;
@@ -19,4 +17,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.search-bar input {
+  width: 100%;
+  font-size: clamp(12px, 1.5vw, 14px);
+}
+
+@media (max-width: 768px) {
+  .search-bar {
+    flex-direction: column;
+    align-items: center;
+  }
 }

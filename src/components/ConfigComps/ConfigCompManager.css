@@ -5,7 +5,6 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   overflow: hidden;
 }
 
@@ -18,6 +17,8 @@
   position: relative;
   width: 100%;
   max-width: 760px;
+  /* con margin: 0 auto; se centra a si mismo independiente si el padre tenga align items center */
+  margin: 0 auto;
 }
 
 .navbar-logo {
