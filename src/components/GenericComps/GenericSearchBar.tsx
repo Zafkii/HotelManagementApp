@@ -37,7 +37,7 @@ export const GenericSearchBar = <
         type="text"
         placeholder="Tap to search..."
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)} // 👈 resalta en tiempo real
+        onChange={(e) => setSearchTerm(e.target.value)}
       />
       <button onClick={handleSearch}>Search</button>
       <button onClick={handleClear}>Clear</button>

@@ -164,6 +164,7 @@ export const GenericManager = ({
         <GenericNavbar
           navbarFilters={navbarFilters}
           onFiltersChange={(newFilters) => {
+            setFilteredData(null)
             setFilters(newFilters)
           }}
         />
