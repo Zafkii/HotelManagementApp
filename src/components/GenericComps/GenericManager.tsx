@@ -200,17 +200,20 @@ export const GenericManager = ({
             isEdit={Boolean(selectedItem)}
           />
         </div>
-        {imageConfig && selectedItem && selectedItem[imageConfig.key] && (
-          <div className="image-card-container">
+        <div className="image-card-container">
+          {" "}
+          {imageConfig && (
             <GenericImageCard
-              itemType={String(
-                selectedItem[imageConfig.key] ?? ""
-              ).toLowerCase()}
+              itemType={
+                selectedItem
+                  ? String(selectedItem[imageConfig.key] ?? "").toLowerCase()
+                  : null
+              }
               customTypes={imageConfig.assetMap}
               defaultImage={imageConfig.defaultAsset}
             />
-          </div>
-        )}
+          )}
+        </div>
         <div className="table-container">
           {loading ? (
             <p>Cargando datos...</p>
