@@ -19,17 +19,16 @@
   width: auto;
   height: auto;
   background-color: #12898d56;
-  padding: 10px;
 }
 
 @media (max-width: 784px) {
   .generic-image {
-    max-width: clamp(120px, 20vw, 150px);
+    max-width: clamp(110px, 20vw, 160px);
   }
 }
 
-@media (max-width: 424px) {
+@media (max-width: 442px) {
   .generic-image {
-    max-width: clamp(80px, 20vw, 120px);
+    max-width: clamp(100px, 20vw, 120px);
   }
 }

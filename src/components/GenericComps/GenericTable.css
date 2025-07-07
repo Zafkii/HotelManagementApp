@@ -1,7 +1,7 @@
 .generic-table {
-  background-color: rgba(2, 126, 12, 0.337);
   display: block;
   grid-template-columns: auto;
+  background-color: rgba(2, 88, 5, 0.337);
   overflow-y: auto;
   overflow-x: auto;
   margin: 10px;

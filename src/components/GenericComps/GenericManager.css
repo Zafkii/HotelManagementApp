@@ -6,14 +6,15 @@
 }
 .form-table-wrapper {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: auto;
   grid-template-rows: auto auto;
-  gap: 2px;
+  gap: 10px;
 }
 
 .form-container {
   grid-column: 1;
   grid-row: 1;
+  background-color: #12898d56;
 }
 
 .image-card-container {
@@ -22,6 +23,7 @@
 }
 
 .table-container {
+  background-color: #12898d56;
   grid-column: 2;
   grid-row: 1 / span 2;
 }
@@ -36,6 +38,7 @@ h2 {
   .form-table-wrapper {
     grid-template-columns: 1fr auto;
     grid-template-rows: auto auto auto;
+    gap: 4px;
   }
 
   .form-container {

@@ -1,12 +1,9 @@
 .generic-form {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
   padding: 10px;
   justify-content: space-around;
-  background-color: #12898d56;
-  height: auto;
-  max-height: 100%;
 }
 
 .generic-form div:not(.form-buttons) {
