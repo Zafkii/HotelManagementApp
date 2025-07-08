@@ -4,6 +4,8 @@
   gap: 4px;
   padding: 10px;
   justify-content: space-around;
+  height: 100%;
+  align-items: center;
 }
 
 .generic-form div:not(.form-buttons) {
@@ -22,8 +24,6 @@
 .generic-form .form-buttons {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
   margin: 8px;
   gap: 8px;
 }
