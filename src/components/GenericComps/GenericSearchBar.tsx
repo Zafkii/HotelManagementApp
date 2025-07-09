@@ -33,14 +33,18 @@ export const GenericSearchBar = <
 
   return (
     <div className="search-bar">
-      <input
-        type="text"
-        placeholder="Tap to search..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      <button onClick={handleSearch}>Search</button>
-      <button onClick={handleClear}>Clear</button>
+      <div className="search-bar-inner">
+        <input
+          type="text"
+          placeholder="Tap to search..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <div className="search-dropdown">
+          <button onClick={handleSearch}>Search</button>
+          <button onClick={handleClear}>Clear</button>
+        </div>
+      </div>
     </div>
   )
 }
