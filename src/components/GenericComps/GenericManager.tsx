@@ -179,7 +179,15 @@ export const GenericManager = ({
         }}
       />
 
-      <div className="form-table-wrapper">
+      <div
+        className={`form-table-wrapper ${
+          imageConfig ? "with-image" : "no-image"
+        }`}
+        style={{
+          gridTemplateColumns: imageConfig ? "auto auto" : "auto",
+          gridTemplateRows: imageConfig ? "auto auto" : "auto",
+        }}
+      >
         <div className="form-container">
           <GenericForm
             formFields={formFields}
@@ -201,9 +209,8 @@ export const GenericManager = ({
             isEdit={Boolean(selectedItem)}
           />
         </div>
-        <div className="image-card-container">
-          {" "}
-          {imageConfig && (
+        {imageConfig && (
+          <div className="image-card-container">
             <GenericImageCard
               itemType={
                 selectedItem
@@ -213,8 +220,9 @@ export const GenericManager = ({
               customTypes={imageConfig.assetMap}
               defaultImage={imageConfig.defaultAsset}
             />
-          )}
-        </div>
+          </div>
+        )}
+
         <div className="table-container">
           {loading ? (
             <p>Cargando datos...</p>
