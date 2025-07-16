@@ -57,3 +57,9 @@
   flex-direction: column;
   align-items: center;
 }
+
+/* valores para que el contenido del boton no haga overflow y el boton contenedor crezca de acuerdo */
+.dropdown-content button {
+  display: inline-flex;
+  white-space: nowrap;
+}
