@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Rooms from "./Rooms"
 import Clients from "./Clients"
+import Reservations from "./Reservations"
 import "./ConfigCompManager.css"
 
 type FrameView =
@@ -21,6 +22,8 @@ const ConfigCompManager = () => {
         return <Rooms />
       case "Clients":
         return <Clients />
+      case "Reservations":
+        return <Reservations />
       default:
         return <div>Selecciona una vista</div>
     }
