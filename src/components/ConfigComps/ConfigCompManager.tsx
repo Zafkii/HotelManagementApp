@@ -3,6 +3,7 @@ import Rooms from "./Rooms"
 import Clients from "./Clients"
 import Reservations from "./Reservations"
 import Staff from "./Staff"
+import MaintenanceTasks from "./MaintenanceTasks"
 import "./ConfigCompManager.css"
 
 type FrameView =
@@ -12,6 +13,7 @@ type FrameView =
   | "Services"
   | "Reservations"
   | "Payments"
+  | "MaintenanceTasks"
 
 const ConfigCompManager = () => {
   const [frameView, setFrameView] = useState<FrameView>("Rooms")
@@ -27,6 +29,8 @@ const ConfigCompManager = () => {
         return <Reservations />
       case "Employees":
         return <Staff />
+      case "MaintenanceTasks":
+        return <MaintenanceTasks />
       default:
         return <div>Selecciona una vista</div>
     }
@@ -62,6 +66,9 @@ const ConfigCompManager = () => {
             Reservations
           </button>
           <button onClick={() => handleNavigation("Payments")}>Payments</button>
+          <button onClick={() => handleNavigation("MaintenanceTasks")}>
+            MaintenanceTasks
+          </button>
         </div>
 
         {/* Menú vertical sobrepuesto para móvil */}
@@ -80,6 +87,9 @@ const ConfigCompManager = () => {
             </button>
             <button onClick={() => handleNavigation("Payments")}>
               Payments
+            </button>
+            <button onClick={() => handleNavigation("MaintenanceTasks")}>
+              MaintenanceTasks
             </button>
           </div>
         )}

@@ -14,8 +14,17 @@ type RoomType =
   | "executive"
   | "suite"
   | "presidential suite"
+
+type MaintenanceType =
+  | "being cleaned"
+  | "out of service"
+  | "inspection"
+  | "repair"
+  | "maintenance"
+
 type AssetMap = {
   rooms: Record<RoomType, AssetItem>
+  maintenance: Record<MaintenanceType, AssetItem>
 }
 
 export const Assets: AssetMap = {
@@ -29,7 +38,7 @@ export const Assets: AssetMap = {
       gif: "https://i.postimg.cc/g0PTMnRZ/tutorial.gif",
     },
     single: {
-    image: "https://i.postimg.cc/cLn0Pgz1/single.jpg",
+      image: "https://i.postimg.cc/cLn0Pgz1/single.jpg",
       gif: "https://i.postimg.cc/g0PTMnRZ/tutorial.gif",
     },
     standard: {
@@ -61,4 +70,5 @@ export const Assets: AssetMap = {
       gif: "https://i.postimg.cc/g0PTMnRZ/tutorial.gif",
     },
   },
+  maintenance: {},
 }

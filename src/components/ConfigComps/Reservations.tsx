@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import "./Reservations.css"
 
 interface Client {
   ci_client: number
@@ -41,7 +42,7 @@ const Reservations = () => {
 
   const handleSubmit = async () => {
     if (!selectedClient || roomSelections.length === 0) {
-      alert("Selecciona un cliente y al menos una habitación")
+      alert("Select a client and at least one room to book.")
       return
     }
 
@@ -56,12 +57,15 @@ const Reservations = () => {
       const clientData = await clientRes.json()
 
       const serial_by_client = Number(clientData.serial_by_client)
-      if (!serial_by_client) throw new Error("No se pudo crear la reservación")
+      if (!serial_by_client)
+        throw new Error(
+          "It was not possible to register the client reservation."
+        )
 
       // 2. Registrar habitaciones reservadas
       for (const room of roomSelections) {
         if (!room.id_room || room.booked_nights < 1) {
-          console.warn("Habitación inválida detectada:", room)
+          console.warn("Detected Invalid Room: ", room)
           continue
         }
 
@@ -77,18 +81,15 @@ const Reservations = () => {
 
         if (!res.ok) {
           const errorText = await res.text()
-          console.error(
-            `Error al reservar habitación ${room.id_room}:`,
-            errorText
-          )
+          console.error(`Error registering Room ${room.id_room}:`, errorText)
         }
       }
 
-      alert("Reservación registrada correctamente.")
+      alert("Successfully registered the reservation!")
       setSelectedClient("")
       setRoomSelections([{ id_room: "", booked_nights: 1 }])
     } catch (err) {
-      alert("Ocurrió un error al registrar la reservación.")
+      alert("An error occurred while registering the reservation.")
       console.error(err)
     } finally {
       setIsSubmitting(false)
@@ -96,16 +97,15 @@ const Reservations = () => {
   }
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">Registrar Reservación</h2>
-
-      <label className="block mb-2">Seleccionar cliente:</label>
+    <div className="reservations-container">
+      <h2 className="reservations-title">Regiter Reservation</h2>
+      <label className="form-label">Select Client:</label>
       <select
         value={selectedClient}
         onChange={(e) => setSelectedClient(e.target.value)}
-        className="border p-2 mb-4 w-full"
+        className="form-select"
       >
-        <option value="">-- Selecciona un cliente --</option>
+        <option value="">-- Select a Client --</option>
         {clients.map((client) => (
           <option key={client.ci_client} value={client.ci_client}>
             {client.first_names} {client.last_names} ({client.ci_client})
@@ -113,9 +113,9 @@ const Reservations = () => {
         ))}
       </select>
 
-      <h3 className="font-semibold mb-2">Habitaciones a reservar:</h3>
+      <h3 className="room-section-title">Rooms to booked and its nights:</h3>
       {roomSelections.map((room, index) => (
-        <div key={index} className="flex items-center gap-2 mb-2">
+        <div key={index} className="room-selection">
           <select
             value={room.id_room}
             onChange={(e) => {
@@ -123,9 +123,9 @@ const Reservations = () => {
               updated[index].id_room = e.target.value
               setRoomSelections(updated)
             }}
-            className="border p-2"
+            className="room-select"
           >
-            <option value="">-- Habitación --</option>
+            <option value="">-- Room --</option>
             {rooms.map((r) => (
               <option key={r.id_room} value={r.id_room}>
                 {r.id_room} ({r.type})
@@ -142,7 +142,7 @@ const Reservations = () => {
               updated[index].booked_nights = Number(e.target.value)
               setRoomSelections(updated)
             }}
-            className="border p-2 w-24"
+            className="nights-input"
             placeholder="Noches"
           />
 
@@ -150,9 +150,9 @@ const Reservations = () => {
             onClick={() =>
               setRoomSelections((prev) => prev.filter((_, i) => i !== index))
             }
-            className="bg-red-500 text-white px-2 py-1 rounded"
+            className="delete-room-btn"
           >
-            Eliminar
+            Delete
           </button>
         </div>
       ))}
@@ -164,9 +164,9 @@ const Reservations = () => {
             { id_room: "", booked_nights: 1 },
           ])
         }
-        className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
+        className="add-room-btn"
       >
-        Añadir habitación
+        Add Room
       </button>
 
       <br />
@@ -174,7 +174,7 @@ const Reservations = () => {
       <button
         onClick={handleSubmit}
         disabled={isSubmitting}
-        className="bg-green-600 text-white px-4 py-2 rounded"
+        className="submit-btn"
       >
         {isSubmitting ? "Registrando..." : "Registrar Reservación"}
       </button>
