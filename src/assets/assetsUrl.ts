@@ -16,6 +16,7 @@ type RoomType =
   | "presidential suite"
 
 type MaintenanceType =
+  | "default"
   | "being cleaned"
   | "out of service"
   | "inspection"
@@ -70,5 +71,30 @@ export const Assets: AssetMap = {
       gif: "https://i.postimg.cc/g0PTMnRZ/tutorial.gif",
     },
   },
-  maintenance: {},
+  maintenance: {
+    default: {
+      image: "https://i.postimg.cc/g0PTMnRZ/tutorial.gif",
+      gif: "https://i.postimg.cc/g0PTMnRZ/tutorial.gif",
+    },
+    "being cleaned": {
+      image: "https://i.postimg.cc/3RnT2gk1/presidential-suite.jpg",
+      gif: "https://i.postimg.cc/g0PTMnRZ/tutorial.gif",
+    },
+    "out of service": {
+      image: "https://i.postimg.cc/3RnT2gk1/presidential-suite.jpg",
+      gif: "https://i.postimg.cc/g0PTMnRZ/tutorial.gif",
+    },
+    inspection: {
+      image: "https://i.postimg.cc/3RnT2gk1/presidential-suite.jpg",
+      gif: "https://i.postimg.cc/g0PTMnRZ/tutorial.gif",
+    },
+    repair: {
+      image: "https://i.postimg.cc/3RnT2gk1/presidential-suite.jpg",
+      gif: "https://i.postimg.cc/g0PTMnRZ/tutorial.gif",
+    },
+    maintenance: {
+      image: "https://i.postimg.cc/3RnT2gk1/presidential-suite.jpg",
+      gif: "https://i.postimg.cc/g0PTMnRZ/tutorial.gif",
+    },
+  },
 }
